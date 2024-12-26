@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constellation Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="welcome-screen" class="screen">
+        <h1>Constellation <span class="highlight">GUIDE</span></h1>
+        <p class="description">Embark on a celestial journey through the zodiac constellations. Discover your cosmic identity and explore the ancient wisdom of the stars.</p>
+        <button id="begin-journey">Begin Journey</button>
+    </div>
+
+    <div id="user-input-screen" class="screen hidden">
+        <div class="glass-panel">
+            <h2>Enter Your Details</h2>
+            <input type="text" id="user-name" placeholder="Your Name" required>
+            <select id="zodiac-sign" required>
+                <option value="">Select Your Zodiac Sign</option>
+                <option value="aries">Aries (Mar 21 - Apr 19)</option>
+                <option value="taurus">Taurus (Apr 20 - May 20)</option>
+                <option value="gemini">Gemini (May 21 - Jun 20)</option>
+                <option value="cancer">Cancer (Jun 21 - Jul 22)</option>
+                <option value="leo">Leo (Jul 23 - Aug 22)</option>
+                <option value="virgo">Virgo (Aug 23 - Sep 22)</option>
+                <option value="libra">Libra (Sep 23 - Oct 22)</option>
+                <option value="scorpio">Scorpio (Oct 23 - Nov 21)</option>
+                <option value="sagittarius">Sagittarius (Nov 22 - Dec 21)</option>
+                <option value="capricorn">Capricorn (Dec 22 - Jan 19)</option>
+                <option value="aquarius">Aquarius (Jan 20 - Feb 18)</option>
+                <option value="pisces">Pisces (Feb 19 - Mar 20)</option>
+            </select>
+            <button id="start-exploration">Start Exploration</button>
+        </div>
+    </div>
+
+    <div id="constellation-screen" class="screen hidden">
+        <div id="canvas-container"></div>
+        <div id="info-panel" class="glass-panel">
+            <h2 id="zodiac-name"></h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Characteristics</h3>
+                    <p id="characteristics"></p>
+                </div>
+                <div class="info-box">
+                    <h3>Lucky Details</h3>
+                    <p id="lucky-color"></p>
+                    <p id="lucky-number"></p>
+                </div>
+                <div class="info-box">
+                    <h3>Population</h3>
+                    <p id="population"></p>
+                </div>
+                <div class="info-box">
+                    <h3>Blessings</h3>
+                    <p id="blessings"></p>
+                </div>
+                <div class="info-box">
+                    <h3>Date Range</h3>
+                    <p id="date-range"></p>
+                </div>
+            </div>
+            <button id="change-zodiac">Change Zodiac</button>
+        </div>
+    </div>
+
+    <script type="module" src="/script.js"></script>
+</body>
+</html>
