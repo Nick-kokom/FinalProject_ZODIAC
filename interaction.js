@@ -4,15 +4,17 @@ export function setupInteraction(constellation, domElement, camera, onClick) {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    function onMouseClick(event) {
-        // Calculate mouse position in normalized device coordinates
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    function handleInteraction(event) {
+        event.preventDefault();
+        
+        // Get correct coordinates for both mouse and touch
+        const x = event.clientX || (event.touches && event.touches[0].clientX);
+        const y = event.clientY || (event.touches && event.touches[0].clientY);
+        
+        mouse.x = (x / window.innerWidth) * 2 - 1;
+        mouse.y = -(y / window.innerHeight) * 2 + 1;
 
-        // Update the picking ray with the camera and mouse position
         raycaster.setFromCamera(mouse, camera);
-
-        // Calculate objects intersecting the picking ray
         const intersects = raycaster.intersectObjects(constellation.children, true);
 
         if (intersects.length > 0) {
@@ -20,5 +22,10 @@ export function setupInteraction(constellation, domElement, camera, onClick) {
         }
     }
 
-    domElement.addEventListener('click', onMouseClick);
+    // Add both mouse and touch event listeners
+    domElement.addEventListener('click', handleInteraction);
+    domElement.addEventListener('touchstart', handleInteraction);
+    
+    // Prevent default touch behavior
+    domElement.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
 }
