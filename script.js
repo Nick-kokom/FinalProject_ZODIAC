@@ -4,6 +4,7 @@ import { createConstellation } from './constellation.js';
 import { setupInteraction } from './interaction.js';
 import { createStarfield } from './starfield.js';
 
+
 let currentScene, camera, renderer;
 let currentConstellation = null;
 let starfield = null;
@@ -118,3 +119,4 @@ window.addEventListener('resize', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
 });
+
