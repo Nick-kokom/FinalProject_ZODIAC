@@ -3,7 +3,7 @@ import { zodiacData } from './zodiacData.js';
 import { createConstellation } from './constellation.js';
 import { setupInteraction } from './interaction.js';
 import { createStarfield } from './starfield.js';
-
+import { startQuiz } from './src/quiz.js';
 
 let currentScene, camera, renderer;
 let currentConstellation = null;
@@ -78,6 +78,18 @@ document.getElementById('change-zodiac').addEventListener('click', () => {
     }
 });
 
+// Quiz button event listeners
+document.getElementById('welcome-quiz-button').addEventListener('click', () => {
+    document.getElementById('welcome-screen').classList.add('hidden');
+    document.getElementById('quiz-screen').classList.remove('hidden');
+    startQuiz();
+});
+
+document.getElementById('info-quiz-button').addEventListener('click', () => {
+    document.getElementById('quiz-screen').classList.remove('hidden');
+    startQuiz();
+});
+
 function displayConstellation(sign, scene) {
     const data = zodiacData[sign];
     
@@ -88,7 +100,6 @@ function displayConstellation(sign, scene) {
     currentConstellation = createConstellation(data.constellation);
     scene.add(currentConstellation);
     
-    // Setup interaction for the new constellation
     setupInteraction(currentConstellation, renderer.domElement, camera, () => {
         displayZodiacInfo(sign);
     });
@@ -97,10 +108,8 @@ function displayConstellation(sign, scene) {
 function displayZodiacInfo(sign) {
     const data = zodiacData[sign];
     
-    // Show info panel
     document.getElementById('info-panel').classList.remove('hidden');
     
-    // Update info panel
     document.getElementById('zodiac-name').textContent = data.name;
     document.getElementById('zodiac-name').style.color = data.color;
     document.getElementById('characteristics').textContent = data.characteristics;
@@ -111,7 +120,6 @@ function displayZodiacInfo(sign) {
     document.getElementById('date-range').textContent = data.dateRange;
 }
 
-// Handle window resize
 window.addEventListener('resize', () => {
     if (camera && renderer) {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -119,4 +127,3 @@ window.addEventListener('resize', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
 });
-
