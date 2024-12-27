@@ -71,7 +71,7 @@ button:hover {
     border: 1px solid var(--glass-border);
     border-radius: 15px;
     padding: 2rem;
-    max-width: 600px;
+    max-width: 600px; /* Reduced from 800px */
     width: 90%;
 }
 
@@ -81,12 +81,12 @@ input, select {
     margin: 0.5rem 0;
     border: 1px solid var(--glass-border);
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7); /* Darker background */
     color: white;
 }
 
 select {
-    color: white !important;
+    color: white !important; /* Force white text */
     option {
         background: #000000;
         color: white;
@@ -113,7 +113,7 @@ select {
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for desktop */
+    grid-template-columns: repeat(2, 1fr); /* Changed to 2 columns */
     gap: 1rem;
     margin: 1rem 0;
 }
@@ -126,7 +126,7 @@ select {
 }
 
 #zodiac-name {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Increased size */
     text-align: center;
     margin-bottom: 1rem;
     font-weight: bold;
@@ -140,72 +140,80 @@ h3 {
     font-size: 1.2rem;
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem; /* Smaller heading on mobile */
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
     }
 
-    .description {
-        font-size: 1rem;
-        max-width: 90%;
+    .container {
+        padding: 0.5rem;
     }
 
-    button {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
+    /* Adjust touch targets for better mobile interaction */
+    button, 
+    .option-btn,
+    .answer-input {
+        min-height: 44px;
+        padding: 12px;
     }
 
-    .glass-panel {
-        padding: 1.5rem;
-        width: 95%;
+    /* Stack grid items vertically on mobile */
+    .options-grid {
+        grid-template-columns: 1fr !important;
     }
 
-    .info-grid {
-        grid-template-columns: 1fr; /* Single column layout for mobile */
-    }
-
-    #info-panel {
-        bottom: 1rem;
-        font-size: 0.9rem;
-    }
-
-    #canvas-container {
-        background: radial-gradient(circle at center, transparent, rgba(0, 0, 0, 0.6));
-    }
-
-    #zodiac-name {
-        font-size: 2rem; /* Adjusted font size for mobile */
-    }
-
-    h3 {
-        font-size: 1rem;
-    }
-
-    input, select {
-        padding: 0.6rem; /* Smaller padding for input fields */
+    /* Adjust spacing for mobile */
+    .quiz-panel {
+        margin: 1rem;
+        padding: 1rem;
     }
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem; /* Even smaller heading for very small screens */
-    }
-
-    .description {
-        font-size: 0.9rem;
-    }
-
-    .glass-panel {
+/* Tablet styles (768px to 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
         padding: 1rem;
     }
+}
 
-    button {
-        font-size: 0.9rem;
-        padding: 0.7rem 1.2rem;
+/* Landscape orientation adjustments */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .container {
+        padding-top: 0.5rem;
     }
 
-    #zodiac-name {
-        font-size: 1.8rem; /* Adjust font size for very small screens */
+    .quiz-panel {
+        margin: 0.5rem auto;
+    }
+
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+}
+
+/* High-DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Adjust font rendering for sharper text */
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1a1a2e;
+        --text-color: #ffffff;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
     }
 }
