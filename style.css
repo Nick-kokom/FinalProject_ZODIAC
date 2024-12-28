@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #01a772;
+    --primary-color: #ce1e1e;
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
 }
@@ -93,6 +93,28 @@ select {
     }
 }
 
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Blue color */
+    border: none;
+    border-radius: 5px;
+    justify-content: center;
+    justify-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 0.1rem;
+    margin-bottom: 40%;
+    text-align: center;
+  }
+
+  .back-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+
 #canvas-container {
     position: absolute;
     top: 0;
@@ -141,43 +163,15 @@ h3 {
 }
 
 
-@media screen and (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
 
-    .container {
-        padding: 0.5rem;
-    }
 
-    /* Adjust touch targets for better mobile interaction */
-    button, 
-    .option-btn,
-    .answer-input {
-        min-height: 44px;
-        padding: 12px;
-    }
-
-    /* Stack grid items vertically on mobile */
-    .options-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    /* Adjust spacing for mobile */
-    .quiz-panel {
-        margin: 1rem;
-        padding: 1rem;
-    }
-}
-
-/* Tablet styles (768px to 1024px) */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .container {
         padding: 1rem;
     }
 }
 
-/* Landscape orientation adjustments */
+
 @media screen and (orientation: landscape) and (max-height: 600px) {
     .container {
         padding-top: 0.5rem;
@@ -193,7 +187,6 @@ h3 {
     }
 }
 
-/* High-DPI screens */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     /* Adjust font rendering for sharper text */
     html {
@@ -217,3 +210,4 @@ h3 {
         transition: none !important;
     }
 }
+
