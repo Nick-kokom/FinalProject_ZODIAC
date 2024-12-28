@@ -1,0 +1,136 @@
+/* Quiz Styles */
+#quiz-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    z-index: 1000;
+    
+}
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+#question {
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align vertically */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    gap: 2rem; /* Space between options */
+    padding: 2rem;
+}
+
+
+.quiz-option {
+    padding: 1rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+    
+
+}
+
+.quiz-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.quiz-option.selected {
+    background: var(--primary-color);
+}
+
+#answer-input {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.quiz-button {
+    padding: 0.8rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.quiz-button:hover {
+    transform: scale(1.05);
+}
+
+#quiz-result {
+    text-align: center;
+    color: white;
+    margin: 1rem 0;
+}
+
+#quiz-progress {
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #quiz-screen {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    #question {
+        font-size: 1rem;
+    }
+
+    .quiz-option {
+        padding: 0.8rem;
+    }
+}
+
+/* Quiz Button Styles */
+.quiz-nav-button {
+    position: absolute;
+    right: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.quiz-nav-button:hover {
+    transform: scale(1.05);
+}
+
+#welcome-quiz-button {
+    top: 1rem;
+}
+
+#info-quiz-button {
+    bottom: 1rem;
+}

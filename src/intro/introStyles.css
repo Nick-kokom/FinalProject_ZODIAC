@@ -1,0 +1,83 @@
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.stars-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.story-container {
+    position: fixed;
+    bottom: 5%; /* Adjusts the vertical placement near the footer */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to make it perfectly centered */
+    width: 80%;
+    max-width: 800px;
+    padding: 2rem;
+    animation: slideIn 1s forwards;
+    text-align: center; /* Aligns text inside the container to the center */
+}
+
+.story-paragraph {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s, transform 0.5s;
+    font-family: 'Creepster', cursive;
+    text-align: center; /* Ensures the text inside the paragraph is centered */
+}
+
+
+.story-paragraph.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.skip-button {
+    position: fixed; /* Ensures it's in the same area as the story */
+    bottom: 2rem; /* Places it closer to the bottom */
+    right: 2rem; /* Keeps it aligned to the bottom-right corner */
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skip-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideIn {
+    to {
+        right: 10%;
+    }
+}
