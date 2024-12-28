@@ -4,10 +4,15 @@ import { createConstellation } from './constellation.js';
 import { setupInteraction } from './interaction.js';
 import { createStarfield } from './starfield.js';
 import { startQuiz } from './src/quiz.js';
+import { setupMythSection } from './src/myth/mythManager.js';
+import { setupIntroStory } from './src/intro/introManager.js';
 
 let currentScene, camera, renderer;
 let currentConstellation = null;
 let starfield = null;
+
+
+document.addEventListener('DOMContentLoaded', setupIntroStory);
 
 // Initialize Three.js scene
 function initThree() {
@@ -24,7 +29,7 @@ function initThree() {
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         currentScene.add(ambientLight);
 
-        // Add directional light
+        // Add directional lightnp
         const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
         directionalLight.position.set(5, 5, 5);
         currentScene.add(directionalLight);
@@ -37,6 +42,28 @@ function initThree() {
     }
     return { scene: currentScene, camera, renderer };
 }
+
+
+// Update the displayZodiacInfo function
+function displayZodiacInfo(sign) {
+    const data = zodiacData[sign];
+    
+    document.getElementById('info-panel').classList.remove('hidden');
+    
+    document.getElementById('zodiac-name').textContent = data.name;
+    document.getElementById('zodiac-name').style.color = data.color;
+    document.getElementById('characteristics').textContent = data.characteristics;
+    document.getElementById('lucky-color').textContent = `Lucky Color: ${data.luckyColor}`;
+    document.getElementById('lucky-number').textContent = `Lucky Number: ${data.luckyNumber}`;
+    document.getElementById('population').textContent = `Global Population: ${data.population}`;
+    document.getElementById('blessings').textContent = data.blessings;
+    document.getElementById('date-range').textContent = data.dateRange;
+
+    // Add myth section using the myth manager
+    const infoPanel = document.getElementById('info-panel');
+    setupMythSection(infoPanel, data.myth);
+}
+
 
 function animate() {
     requestAnimationFrame(animate);
@@ -105,25 +132,3 @@ function displayConstellation(sign, scene) {
     });
 }
 
-function displayZodiacInfo(sign) {
-    const data = zodiacData[sign];
-    
-    document.getElementById('info-panel').classList.remove('hidden');
-    
-    document.getElementById('zodiac-name').textContent = data.name;
-    document.getElementById('zodiac-name').style.color = data.color;
-    document.getElementById('characteristics').textContent = data.characteristics;
-    document.getElementById('lucky-color').textContent = `Lucky Color: ${data.luckyColor}`;
-    document.getElementById('lucky-number').textContent = `Lucky Number: ${data.luckyNumber}`;
-    document.getElementById('population').textContent = `Global Population: ${data.population}`;
-    document.getElementById('blessings').textContent = data.blessings;
-    document.getElementById('date-range').textContent = data.dateRange;
-}
-
-window.addEventListener('resize', () => {
-    if (camera && renderer) {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-});
